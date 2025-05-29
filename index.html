@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkVoidSphere</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            background: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.8;
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+        .animate-pulse-slow {
+            animation: pulse 3s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        .nebula {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(50, 0, 100, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -2;
+            animation: nebula-pulse 20s infinite;
+        }
+        @keyframes nebula-pulse {
+            0% { opacity: 0.2; }
+            50% { opacity: 0.5; }
+            100% { opacity: 0.2; }
+        }
+        .parallax-section {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        .nav-link:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+        .section-title {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Starfield Canvas -->
+    <canvas id="canvas"></canvas>
+    <div class="nebula"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-black bg-opacity-50 backdrop-blur-md z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold glow-text">DarkVoidSphere</h1>
+            <div class="space-x-6">
+                <a href="#home" class="text-white hover:text-purple-300 nav-link transition">Home</a>
+                <a href="#about" class="text-white hover:text-purple-300 nav-link transition">About</a>
+                <a href="#features" class="text-white hover:text-purple-300 nav-link transition">Features</a>
+                <a href="#contact" class="text-white hover:text-purple-300 nav-link transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="h-screen flex items-center justify-center text-center">
+        <div>
+            <h1 class="text-5xl md:text-7xl font-bold glow-text animate-pulse-slow mb-6">DarkVoidSphere</h1>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-8 animate-float">
+                Journey into the cosmic void. Discover the uncharted wonders of the universe.
+            </p>
+            <a href="#about" class="inline-block bg-transparent border-2 border-white text-white py-3 px-8 rounded-full hover:bg-white hover:text-black transition-all duration-300 glow-text">
+                Explore Now
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-black bg-opacity-50">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title glow-text">About DarkVoidSphere</h2>
+            <p class="text-lg max-w-3xl mx-auto text-center">
+                DarkVoidSphere is your gateway to the mysteries of the cosmos. We are a platform dedicated to exploring the unknown, harnessing the power of the universe's vast void to inspire, educate, and connect adventurers of the mind and soul.
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 parallax-section" style="background-image: url('https://source.unsplash.com/random/1920x1080?nebula');">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title glow-text">Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 bg-black bg-opacity-70 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4 glow-text">Cosmic Exploration</h3>
+                    <p>Embark on virtual journeys through simulated galaxies and nebulae, powered by cutting-edge technology.</p>
+                </div>
+                <div class="p-6 bg-black bg-opacity-70 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4 glow-text">Community Hub</h3>
+                    <p>Join a community of space enthusiasts, sharing discoveries and insights about the universe.</p>
+                </div>
+                <div class="p-6 bg-black bg-opacity-70 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4 glow-text">Educational Resources</h3>
+                    <p>Access a library of cosmic knowledge, from astrophysics basics to advanced theories.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-black bg-opacity-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="section-title glow-text">Contact Us</h2>
+            <p class="text-lg max-w-2xl mx-auto mb-8">
+                Have questions or want to join the cosmic journey? Reach out to us!
+            </p>
+            <a href="mailto:contact@darkvoidsphere.com" class="inline-block bg-purple-600 text-white py-3 px-8 rounded-full hover:bg-purple-800 transition-all duration-300">
+                Get in Touch
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Canvas Starfield Animation
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const stars = [];
+        const numStars = 300;
+
+        class Star {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.z = Math.random() * canvas.width;
+                this.speed = Math.random() * 3 + 1;
+            }
+
+            update() {
+                this.z -= this.speed;
+                if (this.z <= 0) {
+                    this.z = canvas.width;
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                }
+            }
+
+            draw() {
+                const x = (this.x - canvas.width / 2) * (canvas.width / this.z) + canvas.width / 2;
+                const y = (this.y - canvas.height / 2) * (canvas.width / this.z) + canvas.height / 2;
+                const size = canvas.width / this.z * 1.5;
+
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${1 - this.z / canvas.width})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < numStars; i++) {
+            stars.push(new Star());
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from("#home h1", { opacity: 0, y: 50, duration: 1.5, ease: "power2.out" });
+        gsap.from("#home p", { opacity: 0, y: 30, duration: 1.5, delay: 0.5, ease: "power2.out" });
+        gsap.from("#home a", { opacity: 0, scale: 0.8, duration: 1, delay: 1, ease: "back.out(1.7)" });
+
+        gsap.utils.toArray(".section-title").forEach(title => {
+            gsap.from(title, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: title,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+
+        gsap.utils.toArray("#features > div > div").forEach((card, i) => {
+            gsap.from(card, {
+                opacity: 0,
+                x: i % 2 === 0 ? -100 : 100,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+    </script>
+</body>
+</html>
